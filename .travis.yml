@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t joshhunt/docker-k8s-training -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true joshhunt/docker-k8s-training npm run test
